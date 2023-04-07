@@ -1,9 +1,6 @@
 # s23wb27lokindi
-#### this assignment is to become familiar with using pug templates to dynamically generate web pages on the server side.
+#### The purpose of this assignment is start working with a server side Mongo data base.
 ##### render link
-https://s23wb27lokindi.onrender.com/
+https://s23db27lokindi-um6v.onrender.com/
 ---
-###### Attributes Names
-Name<br>
-Age<br>
-Gender<br>
+
