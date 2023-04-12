@@ -2,10 +2,10 @@ extends layout
 
 block content
   h1=title
-  - let results=[{"Name":"Ravi","Gender":"M","Age":24},{"Name":"Raju","Gender":"M","Age":20},{"Name":"Kiran","Gender":"F","Age":22}]
+  - let items = results
   div(class="container-fluid")
     div(class="row")
-      each item,i in results
+      each item,i in items
         div(class="col-sm-2" onClick=`buy(${i})`)
           p(class="text-primary")=`Name is ${item.Name}`
           p(class="text-primary")=`Gender is ${item.Gender}`
