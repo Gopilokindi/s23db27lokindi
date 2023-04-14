@@ -24,9 +24,9 @@ var Api = require('./routes/resource');
 async function recreateDB(){
 // Delete everything
 await gym.deleteMany();
-let instance1 = new gym({Gym_name:"Ravi", Gym_Gender:'Male',Gym_Age:25});
-let instance2 = new gym({Gym_name:"ramu", Gym_Gender:'Male',Gym_Age:20});
-let instance3 = new gym({Gym_name:"kiran", Gym_Gender:'female',Gym_Age:18});
+let instance1 = new gym({Gym_name:"Ravi", Gym_Gender:'Male',Gym_Age:24});
+let instance2 = new gym({Gym_name:"Raju", Gym_Gender:'Male',Gym_Age:20});
+let instance3 = new gym({Gym_name:"kiran", Gym_Gender:'female',Gym_Age:22});
 instance1.save().then(()=>{
   console.log("Object 1 created")
 }).catch((err)=>{

@@ -7,9 +7,9 @@ block content
     div(class="row")
       each item,i in items
         div(class="col-sm-2" onClick=`buy(${i})`)
-          p(class="text-primary")=`Name is ${item.Name}`
-          p(class="text-primary")=`Gender is ${item.Gender}`
-          p(class="text-primary")=`Age is ${item.Age}`
+          p(class="text-primary")=`Name is ${item.Gym_name}`
+          p(class="text-primary")=`Gender is ${item.Gym_Gender}`
+          p(class="text-primary")=`Age is ${item.Gym_Age}`
   script.
     function buy(itr) {
         itr = itr+1;
