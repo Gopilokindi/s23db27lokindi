@@ -1,0 +1,49 @@
+extends layout
+block content
+    h1= title
+    if (toShow == null)
+        h2 No instance to delete
+    else
+        - let gymid = toShow._id
+        - let Gym_name = toShow.Gym_name
+        - let Gym_Gender = toShow.Gym_Gender
+        - let Gym_Age = toShow.Gym_Age
+        - let actionid = "/resource/gym/" + gymid
+        script let actionid = "#{actionid}"
+        div
+            div.row
+                div(class='gymAttr mr-3') Gym ID is:
+                div #{gymid}
+            div.row
+                div(class='gymAttr mr-3') Gym Person name is:
+                div #{Gym_name}
+            div.row
+                div(class='gymAttr mr-3') Gym person Gender is:
+                div #{Gym_Gender}
+            div.row
+                div(class='gymAttr mr-3') Gym Person Price is:
+                div #{Gym_Age}
+        button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+        button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+        script.
+            function cancel() {
+        // Go back to the home page for the costume collection
+                    window.location.href='/gym'
+                }
+        script.
+            function deleteOnid() {
+                console.log("starting delete")
+                        // delete first
+                fetch(actionid, {
+                    method: 'DELETE' // Don't need a body for the delete
+                }).then((resp) => {
+                    return resp.json(); // or resp.text() or whatever the server sends
+                }).then((body) => {
+                    alert("Delete succeded")
+                    window.location.href='/gym'
+                        // TODO handle body
+                }).catch((error) => {
+                    // TODO handle error
+                    alert("Delete failed " + error )
+                });
+            }
