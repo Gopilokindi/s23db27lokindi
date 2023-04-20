@@ -1,20 +1,23 @@
 extends layout
 block content
   h1= title
-  - let gym_id = toShow._id
-  - let Gym_name = toShow.Gym_name
-  - let Gym_Gender = toShow.Gym_Gender
-  - let Gym_Age = toShow.Gym_Age
-  div
-    div.row
-      div(class='gymAttr mr-3') GYM ID is:
-      div #{gym_id}
-    div.row
-      div(class='gymAttr mr-3') GYM person Name is:
-      div #{Gym_name}
-    div.row
-      div(class='gymAttr mr-3') GYM person Gender is:
-      div #{Gym_Gender}
-    div.row
-      div(class='gymAttr mr-3') GYM person Age is:
-      div #{Gym_Age}
+  if(toShow == null)
+      h2 No instance detail 
+  else
+      - let gym_id = toShow._id
+      - let Gym_name = toShow.Gym_name
+      - let Gym_Gender = toShow.Gym_Gender
+      - let Gym_Age = toShow.Gym_Age
+      div
+         div.row
+            div(class='gymAttr mr-3') GYM ID is:
+            div #{gym_id}
+         div.row
+            div(class='gymAttr mr-3') GYM person Name is:
+            div #{Gym_name}
+         div.row
+            div(class='gymAttr mr-3') GYM person Gender is:
+            div #{Gym_Gender}
+         div.row
+            div(class='gymAttr mr-3') GYM person Age is:
+            div #{Gym_Age}
