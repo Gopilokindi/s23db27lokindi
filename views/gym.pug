@@ -6,15 +6,29 @@ block content
   div(class="container-fluid")
     div(class="row")
       each item,i in items
-       let destination = `dispatch(\"/costumes/update?id=${item._id}\")`
         div(class="col-sm-2" onClick=`buy(${i})`)
           p(class="text-primary")=`Name is ${item.Gym_name}`
           p(class="text-primary")=`Gender is ${item.Gym_Gender}`
           p(class="text-primary")=`Age is ${item.Gym_Age}`
-          button.btn( class="btn-primary ml-1", onclick= destination) Update
   script.
     function buy(itr) {
         itr = itr+1;
         alert(`You Purchased Item ${itr}`);
     }
+
+
+block content
+  h1= title
+  -let items = results
+  div(class="container-fluid")
+   div(class="row m-1")
+    each item in items
+     - let destination = `dispatch(\"/gym/update?id=${item._id}\")`
+     div(class="row-sm-2", class="m-1") Item #{item.Gym_name}(#{item.Gym_Gender}) is #{item.Gym_Age}
+      button.btn( class="btn-primary ml-1", onclick= destination) Update
+
+  script.
+   function dispatch(path){
+     window.location.href=path
+   }
   
