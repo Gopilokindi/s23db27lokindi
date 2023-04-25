@@ -68,7 +68,7 @@ instance3.save().then(()=>{
 }
 
 
-let reseed = true;
+let reseed = false;
 if (reseed) { recreateDB();}
 
 
@@ -82,7 +82,15 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(require('express-session')({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+
 require('dotenv').config();
 const connectionString =process.env.MONGO_CON
 mongoose.connect(connectionString,{useNewUrlParser: true,useUnifiedTopology: true});
@@ -93,13 +101,8 @@ app.use('/gym', gymRouter);
 app.use('/board', boardRouter);
 app.use('/selector', selectorRouter);
 app.use('/resource', Api);
-app.use(require('express-session')({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: false
-}));
-app.use(passport.initialize());
-app.use(passport.session());
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

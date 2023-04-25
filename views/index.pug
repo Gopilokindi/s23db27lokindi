@@ -1,21 +1,14 @@
 extends layout
 
 block content
-  h1= title
-  p Changing text in the Paragraph #{title}
-  button(type="button",class="btn btn-secondary",onclick="doreduce()") Press me
-  <br>
-  <br>
-  div(id="reduce") Reduce the value
-  script.
-    let count=20;
-    let change=-1;
-    function doreduce(){
-      count=count+change;
-      change=change-1;
-      document.getElementById("reduce").innerHTML=`Count ${count} with Change ${change}`;
-    }
-  <br>
-  <br>
-  a(href="gym") Please click link to Gym page
+  if (!user)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/gym") Take me to gym
+    br
+    a(href="/logout") Logout
+
 
